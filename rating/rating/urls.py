@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rate.views import SimpleView, SimpleFormView, RatingsListView
+from rate.views import SimpleView, SimpleFormView, RatingsListView, RatingsDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RatingsListView.as_view(), name='main'),
-    path('form/', SimpleFormView.as_view())
+    path('form/', SimpleFormView.as_view()),
+    path('rating/<int:pk>', RatingsDetailView.as_view()),
 ]

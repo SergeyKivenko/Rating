@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Rating
 from .forms import SimpleForm
 
@@ -39,8 +39,14 @@ class RatingsListView(ListView):
         return context
 
 
+
 class SimpleView(View):
     name = 'Anonymous'
 
     def get(self, request):
         return HttpResponse(f'Hello, {self.name}')
+    
+
+
+class RatingsDetailView(DetailView):
+    model = Rating
